@@ -28,14 +28,17 @@ npm run generate:ssl
 ```
 
 5. Миграции
+```
 npm run migrate
-
+```
 6. Посев тестовых данных
+```
 npm run seed
-
+```
 7. Запуск в режиме разработки
+`
 npm run dev
-
+`
 8. Запуск в режиме прод
 npm run build
 npm start || npm run start
