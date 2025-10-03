@@ -1,0 +1,53 @@
+{
+	"name": "booking-app",
+	"version": "1.0.0",
+	"description": "Test Job",
+	"main": "dist/server.js",
+	"scripts": {
+		"start": "node dist/server.js",
+		"dev": "ts-node-dev src/server.ts",
+		"build": "tsc",
+		"migrate": "knex migrate:latest --knexfile src/db/knexfile.ts",
+		"migrate:rollback": "knex migrate:rollback --knexfile src/db/knexfile.ts",
+		"seed": "knex seed:run --knexfile src/db/knexfile.ts",
+		"generate:ssl": "node src/ssl/generate-ssl.js",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"fs": "^0.0.1-security",
+		"helmet": "^7.0.0",
+		"https": "^1.0.0",
+		"knex": "^2.5.1",
+		"pg": "^8.11.3"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.17",
+		"@types/express": "^4.17.21",
+		"@types/helmet": "^4.0.0",
+		"@types/jest": "^29.5.8",
+		"@types/node": "^20.8.0",
+		"@types/pg": "^8.10.9",
+		"@types/supertest": "^6.0.2",
+		"jest": "^29.7.0",
+		"supertest": "^6.3.3",
+		"ts-jest": "^29.1.1",
+		"ts-node": "^10.9.1",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.2.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VVIkon/booking-app.git"
+	},
+	"author": "V.Ikonnikov",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/VVIkon/booking-app/issues"
+	},
+	"homepage": "https://github.com/VVIkon/booking-app#readme"
+}

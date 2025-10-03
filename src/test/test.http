@@ -1,0 +1,22 @@
+
+
+GET http://localhost:3030/api/bookings/
+content-type: application/json
+###
+
+GET http://localhost:3030/health
+content-type: application/json
+###
+
+POST http://localhost:3030/api/bookings/reserve
+content-type: application/json
+
+{
+	"event_id": 2,
+	"user_id": "U1"
+}
+###
+
+
+
+

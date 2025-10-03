@@ -1,0 +1,28 @@
+{
+	"typescript.preferences.includePackageJsonAutoImports": "auto",
+	"typescript.suggest.autoImports": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.organizeImports": true
+	},
+	"files.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/coverage": true,
+		"**/.nyc_output": true
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/coverage": true
+	},
+	"debug.javascript.autoAttachFilter": "smart",
+	"emmet.includeLanguages": {
+		"typescript": "html",
+		"typescriptreact": "html"
+	},
+	"javascript.suggest.autoImports": true,
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"javascript.inlayHints.parameterNames.enabled": "all"
+}

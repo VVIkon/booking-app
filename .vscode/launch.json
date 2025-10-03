@@ -1,0 +1,149 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug Server (TS-Node)",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/src/server.ts",
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"protocol": "inspector",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "development",
+				"TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+			},
+			"skipFiles": ["<node_internals>/**", "node_modules/**"],
+			"sourceMaps": true,
+			"outFiles": ["${workspaceFolder}/dist/**/*.js"]
+		},
+		{
+			"name": "Debug Server (Built JS)",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/dist/server.js",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"protocol": "inspector",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"skipFiles": ["<node_internals>/**", "node_modules/**"],
+			"preLaunchTask": "npm: build",
+			"sourceMaps": true,
+			"outFiles": ["${workspaceFolder}/dist/**/*.js"]
+		},
+		{
+			"name": "Attach to Process",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"address": "localhost",
+			"localRoot": "${workspaceFolder}",
+			"remoteRoot": "${workspaceFolder}",
+			"skipFiles": ["<node_internals>/**"],
+			"sourceMaps": true
+		},
+		{
+			"name": "Debug Tests (Jest)",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/node_modules/.bin/jest",
+			"args": ["--runInBand", "--watchAll=false", "--coverage=false"],
+			"cwd": "${workspaceFolder}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "test"
+			},
+			"skipFiles": ["<node_internals>/**"],
+			"sourceMaps": true,
+			"windows": {
+				"program": "${workspaceFolder}/node_modules/jest/bin/jest"
+			}
+		},
+		{
+			"name": "Debug Current Test File",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/node_modules/.bin/jest",
+			"args": ["${fileBasenameNoExtension}", "--runInBand", "--watchAll=false", "--coverage=false", "--verbose"],
+			"cwd": "${workspaceFolder}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "test"
+			},
+			"skipFiles": ["<node_internals>/**"],
+			"sourceMaps": true,
+			"windows": {
+				"program": "${workspaceFolder}/node_modules/jest/bin/jest"
+			}
+		},
+		{
+			"name": "Debug API Migration",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/node_modules/.bin/knex",
+			"args": ["migrate:latest", "--knexfile", "src/db/knexfile.ts"],
+			"cwd": "${workspaceFolder}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "development",
+				"TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+			},
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"skipFiles": ["<node_internals>/**"]
+		},
+		{
+			"name": "Debug API with Nodemon",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/node_modules/.bin/nodemon",
+			"args": ["--exec", "ts-node", "src/server.ts"],
+			"cwd": "${workspaceFolder}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"restart": true,
+			"skipFiles": ["<node_internals>/**"],
+			"sourceMaps": true
+		},
+		{
+			"name": "Debug HTTPS Server",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceFolder}/src/server.ts",
+			"runtimeArgs": ["-r", "ts-node/register"],
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"protocol": "inspector",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": {
+				"NODE_ENV": "development",
+				"SSL_KEY_PATH": "./ssl/localhost.key",
+				"SSL_CERT_PATH": "./ssl/localhost.crt",
+				"HTTPS_PORT": "3443",
+				"TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+			},
+			"skipFiles": ["<node_internals>/**", "node_modules/**"],
+			"sourceMaps": true
+		}
+	],
+	"compounds": [
+		{
+			"name": "Debug Server + Tests",
+			"configurations": ["Debug Server (TS-Node)", "Debug Tests (Jest)"],
+			"stopAll": true
+		}
+	]
+}
