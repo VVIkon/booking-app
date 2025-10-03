@@ -5,14 +5,17 @@
 ## Установка
 
 1. Клонирование
+```
 git clone git@github.com:VVIkon/booking-app.git
-
+```
 2. Инициализация
+```
 npm install
-
+```
 3. Генерация SSL сертификаты для HTTPS
+```
 npm run generate:ssl
-
+```
 4. Создание .env файла
 ```
 Необходимо заполнить главы
