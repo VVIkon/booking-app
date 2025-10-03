@@ -12,7 +12,7 @@ POST http://localhost:3030/api/bookings/reserve
 content-type: application/json
 
 {
-	"event_id": 2,
+	"event_id": 1,
 	"user_id": "U1"
 }
 ###
